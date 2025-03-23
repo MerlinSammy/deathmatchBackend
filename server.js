@@ -66,10 +66,7 @@ app.get('/dummyData', async (req, res) => {
 
 //Füge User der Teilnehmer CSV hinzu
 app.post('/addUser', (req, res) => {
-    const { Name, Gewicht, PR } = req.body;
-
-    console.log(Versuch1);
-    
+    const { Name, Gewicht, PR } = req.body;    
 
     if (!Name || !PR || !Gewicht) {
         return res.status(400).json({ error: 'Alle Felder (Name, Gewicht, PR) sind erforderlich.' });
