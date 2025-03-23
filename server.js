@@ -75,6 +75,7 @@ app.post('/addUser', (req, res) => {
     const newUser = `\n${Name},${Gewicht},${PR},0,0,0,0,0,0,0,0,0,0`;
 
     console.log(newUser);
+    console.log(CSV_FILE);
     
 
     fs.appendFile(CSV_FILE, newUser, (err) => {
