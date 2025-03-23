@@ -18,7 +18,8 @@ app.get("/api", (req, res) => {
 
 let users = []
 const CSV_FILE = path.join(process.cwd(),'teilnehmer.csv');
-const csvDummyDataPath = 'dummyData.csv'
+const savedTablePath = path.join(process.cwd(),'savedTable.txt');
+const csvDummyDataPath = path.join(process.cwd(),'dummyData.csv');
 let savedTable;
 
 
@@ -47,11 +48,6 @@ app.get('/users', async (req, res) => {
 
 //Get Users der Teilnehmer CSV
 app.get('/', async (req, res) => {  
-  res.json("Server Working");
-});
-
-//Get Users der Teilnehmer CSV
-app.get('/test', async (req, res) => {
   res.json("Server Working");
 });
 
@@ -255,7 +251,7 @@ app.post("/remove-attempt", (req, res) => {
     console.log(req.body);
 
 
-    fs.writeFile("savedTable.txt", savedTable.htmlString, (err) => {
+    fs.writeFile(savedTablePath, savedTable.htmlString, (err) => {
       if (err) {
         console.error("Fehler beim Schreiben:", err);
         return res.status(500).json({ message: "Speichern fehlgeschlagen" });
@@ -265,7 +261,7 @@ app.post("/remove-attempt", (req, res) => {
   });
 
   app.get('/loadTable', async (req, res) => {
-    fs.readFile("savedTable.txt", "utf8", (err, data) => {
+    fs.readFile(savedTablePath, "utf8", (err, data) => {
       if (err) {
         console.error("Fehler beim Lesen:", err);
         return res.status(500).json({ message: "Datei konnte nicht geladen werden." });
