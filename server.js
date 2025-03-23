@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const { log } = require("console");
 const cors = require("cors");
 const { stringify } = require("csv-stringify/sync");
+const path = require("path")
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -16,7 +17,7 @@ app.get("/api", (req, res) => {
 })
 
 let users = []
-const CSV_FILE = 'teilnehmer.csv';
+const CSV_FILE = path.join(process.cwd(),'teilnehmer.csv');
 const csvDummyDataPath = 'dummyData.csv'
 let savedTable;
 
@@ -45,7 +46,7 @@ app.get('/users', async (req, res) => {
 });
 
 //Get Users der Teilnehmer CSV
-app.get('/', async (req, res) => {
+app.get('/', async (req, res) => {  
   res.json("Server Working");
 });
 
