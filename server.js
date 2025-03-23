@@ -16,9 +16,11 @@ app.get("/api", (req, res) => {
 })
 
 let users = []
-const CSV_FILE = './teilnehmer.csv';
-const csvDummyDataPath = './dummyData.csv'
+const CSV_FILE = 'teilnehmer.csv';
+const csvDummyDataPath = 'dummyData.csv'
 let savedTable;
+
+
 
 function readCSVFile(filePath) {
     return new Promise((resolve, reject) => {
