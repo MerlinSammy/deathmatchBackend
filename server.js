@@ -65,7 +65,7 @@ app.get('/dummyData', async (req, res) => {
 });
 
 //Füge User der Teilnehmer CSV hinzu
-app.post('/addUser', (req, res) => {
+app.post('/addUser', async (req, res) => {
     const { Name, Gewicht, PR } = req.body;    
 
     if (!Name || !PR || !Gewicht) {
@@ -80,7 +80,7 @@ app.post('/addUser', (req, res) => {
     console.log("CSVFilePath",CSV_FILE);
     
 
-    fs.appendFile(CSV_FILE, newUser, (err) => {
+    await fs.appendFile(CSV_FILE, newUser, (err) => {
         if (err) {
             return res.status(500).json({ error: 'Fehler beim Speichern in die CSV-Datei' });
         }
