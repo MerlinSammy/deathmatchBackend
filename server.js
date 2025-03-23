@@ -70,7 +70,12 @@ app.post('/addUser', (req, res) => {
         return res.status(400).json({ error: 'Alle Felder (Name, Gewicht, PR) sind erforderlich.' });
     }
 
+    console.log(req.body);
+    
     const newUser = `\n${Name},${Gewicht},${PR},0,0,0,0,0,0,0,0,0,0`;
+
+    console.log(newUser);
+    
 
     fs.appendFile(CSV_FILE, newUser, (err) => {
         if (err) {
