@@ -43,6 +43,11 @@ app.get('/users', async (req, res) => {
 });
 
 //Get Users der Teilnehmer CSV
+app.get('/', async (req, res) => {
+  res.json("Server Working");
+});
+
+//Get Users der Teilnehmer CSV
 app.get('/dummyData', async (req, res) => {
     try {
         const users = await readCSVFile(csvDummyDataPath);
