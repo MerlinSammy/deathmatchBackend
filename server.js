@@ -37,6 +37,8 @@ function readCSVFile(filePath) {
 
 //Get Users der Teilnehmer CSV
 app.get('/users', async (req, res) => {
+  console.log(CSV_FILE);
+  
     try {
         const users = await readCSVFile(CSV_FILE);
         
@@ -70,12 +72,12 @@ app.post('/addUser', (req, res) => {
         return res.status(400).json({ error: 'Alle Felder (Name, Gewicht, PR) sind erforderlich.' });
     }
 
-    console.log(req.body);
+    console.log("REqBody",req.body);
     
     const newUser = `\n${Name},${Gewicht},${PR},0,0,0,0,0,0,0,0,0,0`;
 
-    console.log(newUser);
-    console.log(CSV_FILE);
+    console.log("NewUser",newUser);
+    console.log("CSVFilePath",CSV_FILE);
     
 
     fs.appendFile(CSV_FILE, newUser, (err) => {
