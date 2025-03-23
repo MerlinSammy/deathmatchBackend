@@ -68,11 +68,14 @@ app.get('/dummyData', async (req, res) => {
 app.post('/addUser', (req, res) => {
     const { Name, Gewicht, PR } = req.body;
 
+    console.log(Versuch1);
+    
+
     if (!Name || !PR || !Gewicht) {
         return res.status(400).json({ error: 'Alle Felder (Name, Gewicht, PR) sind erforderlich.' });
     }
 
-    console.log("REqBody",req.body);
+    console.log("ReqBody",req.body);
     
     const newUser = `\n${Name},${Gewicht},${PR},0,0,0,0,0,0,0,0,0,0`;
 
